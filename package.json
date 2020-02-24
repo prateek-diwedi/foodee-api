@@ -1,5 +1,5 @@
 {
-  "name": "foodee_api",
+  "name": "new_proj_api",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
