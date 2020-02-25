@@ -1,6 +1,9 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
-
+  def find_review
+    @review = Review.find_by(res_id: params[:res_id])
+    render json: @review
+  end
   # GET /reviews
   # GET /reviews.json
   def index

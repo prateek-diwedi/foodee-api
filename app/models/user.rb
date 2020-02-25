@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
+  has_many :favourites
+  has_many :reviews
+  has_many :ratings
 validates :username, presence: true
 validates :username, uniqueness: true
 validates :username, length: { minimum: 4 }
