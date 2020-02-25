@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post '/reviews', to: 'reviews#create'
   post '/ratings', to: 'ratings#create'
   get '/find_review', to: 'reviews#find_review'
+  get '/reviews' ,to: 'reviews#index'
   resources :users, only: [:create, :show, :index]
      resources :favourites
      resources :ratings
