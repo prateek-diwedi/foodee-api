@@ -1,7 +1,11 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
   def find_review
-    @review = Review.find_by(res_id: params[:res_id])
+    # @review = Review.find_by(res_id: params[:res_id] limit : nil)
+    @review = Review.where(res_id: params[:res_id]).to_a
+    # @review = Review.find(:all, :conditions => { :res_id => params[:res_id] })
+    # @review = Review.all
+    # @review = Review.find_by_sql("SELECT * FROM reviews WHERE ")
     render json: @review
   end
   # GET /reviews
