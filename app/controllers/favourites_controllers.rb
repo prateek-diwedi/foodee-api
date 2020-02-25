@@ -1,4 +1,4 @@
-class Api::V1::FavouritesController < ApplicationController
+class FavouritesController < ApplicationController
   before_action :set_favourite, only: [:show, :edit, :update, :destroy]
 
   # GET /favourites

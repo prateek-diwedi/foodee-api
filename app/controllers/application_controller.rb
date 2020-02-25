@@ -1,31 +1,19 @@
-class ApplicationController < ActionController::API
+class ApplicationController < ActionController::Base
+  skip_before_action :verify_authenticity_token
+  helper_method :login!, :logged_in?, :current_user, :authorized_user?, :logout!
+def login!
+    session[:user_id] = @user.id
+  end
+def logged_in?
+    !!session[:user_id]
+  end
+def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+def authorized_user?
+     @user == current_user
+   end
+def logout!
+     session.clear
+   end
 end
-
-# class ApplicationController < ActionController::Base
-#   protect_from_forgery with: :exception
-
-#   def user_signed_in?
-#       if session[:user_id].present? && current_user.nil?
-#         session[:user_id] = nil
-#       end
-#         session[:user_id].present?
-#   end
-
-#       helper_method :user_signed_in?
-
-
-
-#   def current_user
-#     @current_user ||= User.find_by(id: session[:user_id])
-#   end
-
-#   helper_method :current_user
-
-#   def authenticate_user!
-#     if !user_signed_in?
-#       redirect_to new_session_path, notice: "please sign in"
-#     end
-#   end
-
-
-# end
