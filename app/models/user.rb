@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
-  has_many :favourites
+  has_many :favourites, dependent: :destroy
   has_many :reviews
   has_many :ratings
 validates :username, presence: true
