@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   post '/ratings', to: 'ratings#create'
   get '/find_review', to: 'reviews#find_review'
   get '/reviews' ,to: 'reviews#index'
+  get '/find_favourite', to: 'favourites#find_favourite'
+  delete '/favourites' , to: 'favourites#destroy'
   resources :users, only: [:create, :show, :index]
      resources :favourites
      resources :ratings
