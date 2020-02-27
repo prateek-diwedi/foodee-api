@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/find_review', to: 'reviews#find_review'
   get '/reviews' ,to: 'reviews#index'
   get '/find_favourite', to: 'favourites#find_favourite'
+  get '/user_favourite', to: 'favourites#user_favourite'
   delete '/favourites' , to: 'favourites#destroy'
   resources :users, only: [:create, :show, :index]
      resources :favourites

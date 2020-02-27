@@ -1,9 +1,16 @@
 class FavouritesController < ApplicationController
   before_action :set_favourite, only: [:show, :edit, :update, :destroy]
+  def user_favourite
+    
+    # @favourite = Favourite.find_by (user_id: params[:user_id]).to_a
+         @favourite = Favourite.where(user_id: params[:user_id]).to_a
+
+     render json: @favourite
+  end
 
   def find_favourite
     p params
-    #  @favourite = Favourite.find_by user_id: params[:user_id]
+    # @favourite = Favourite.find_by user_id: params[:user_id]
     # @favourite = Favourite.where(user_id: params[:user_id])
      @favourite = Favourite.where('res_id = ? AND user_id=?', params[:res_id],params[:user_id]).last
     # @review = Review.all
@@ -102,14 +109,7 @@ class FavouritesController < ApplicationController
 
 
 
-  # def destroy
-  #   if !(already_liked?)
-  #     flash[:notice] = "Cannot unlike"
-  #   else
-  #     @like.destroy
-  #   end
-  #   redirect_to post_path(@post)
-  # end
+ 
 
   private
     # Use callbacks to share common setup or constraints between actions.
